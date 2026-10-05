@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
-const API_URL = process.env.API_URL ?? 'http://localhost:4000';
+// Strip a stray BOM/whitespace (Windows shells add them when piping env values in).
+const API_URL = (process.env.API_URL ?? 'http://localhost:4000').replace(/^﻿/, '').trim().replace(/\/$/, '');
 
 const config: NextConfig = {
   reactStrictMode: true,
